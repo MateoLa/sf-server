@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Stockfish UCI</title>
+  <link rel="icon" type="image/svg+xml" href="stockfish.svg">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <style>
+    body { padding-top: 50px; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Test Wasm Compilation</h2>
+
+    <div class="jumbotron">
+      <h3>Adding numbers</h3>
+      <form id="form" method="POST">
+        <input type="text" id="nr1" name="nr1" placeholder="Nro 1" required>
+        <input type="text" id="nr2" name="nr2" placeholder="Nro 2" required>
+      </form>
+    </div>
+
+    <div class="jumbotron">
+      <h3>Response</h3>
+      <div id="output"></div>
+    </div>
+  </div>
+
+  <script src="/script.js" type="module"></script>
+</body>
+</html>
