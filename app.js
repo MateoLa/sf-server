@@ -1,17 +1,18 @@
 'use strict'
 
 const express = require('express');
-const favicon = require('serve-favicon');
-const path = require('path');
-
 const app = express();
 const port = 5002;
 
-app.use(express.urlencoded({extended: true}));
+const path = require('path');
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
-app.use(favicon(path.join(__dirname, '/public/stockfish.svg')));
+app.use(express.urlencoded({extended: true}));
 
+
+app.get('/stockfish.svg', (req, res) => {
+	res.render(path.join(__dirname, 'public/stockfish.svg'));
+});
 
 app.use((req, res, next) => {
     res.set("Access-Control-Allow-Origin", "*");

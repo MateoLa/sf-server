@@ -17,14 +17,23 @@ node app.js
 #### How could you test emcc .js and .wasm outputs?
 
 ```sh
-# compile only the .wasm file:
-emcc test/test.c -O2 -s WASM=0 -s SIDE_MODULE=1 -o test/test.wasm
-# compile both the .wasm and the .js glue file:
-emcc test/test.c -O2 -s WASM=1 -s MAIN_MODULE=1 -o test/test.js
-#or:
-emcc test/test.c -O2 -o test/test.js -s EXPORT_ES6=1
+emcc test/example.c -o test/example.js
+emcc test/example.c -O3 -o test/example.js -s EXPORT_ES6=1
+emcc test/example.c -O3 -o test/example.js -s EXPORT_ES6=1 -s EXPORTED_FUNCTIONS='["_add"]'
+emcc test/example.c -O3 -o test/example.js -s EXPORT_ES6=1 --profiling-funcs
 ```
 
 ```sh
-node example.js
+node test.js
+```
+
+
+#### Wasm decompile
+
+```sh
+sudo apt install wabt
+
+wasm-decompile test/example.wasm
+wasm-objdump -h test/example.wasm
+wasm2wat test/example.wasm -o test/example.wat
 ```

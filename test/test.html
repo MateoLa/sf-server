@@ -16,18 +16,19 @@
 
     <div class="jumbotron">
       <h3>Adding numbers</h3>
-      <form id="form" method="POST">
-        <input type="text" id="nr1" name="nr1" placeholder="Nro 1" required>
-        <input type="text" id="nr2" name="nr2" placeholder="Nro 2" required>
+      <form id="form" action="/" method="POST">
+        <input type="text" id="nr1" name="nr1" placeholder="Nr 1" required>
+        <input type="text" id="nr2" name="nr2" placeholder="Nr 2" required>
+        <input type="submit" style="visibility:hidden">
       </form>
     </div>
 
     <div class="jumbotron">
-      <h3>Response</h3>
+      <h3>Result</h3>
       <div id="output"></div>
     </div>
   </div>
 
-  <script src="/script.js" type="module"></script>
+  <script src="script.js" type="module"></script>
 </body>
 </html>
