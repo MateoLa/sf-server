@@ -32,6 +32,9 @@ app.get('/wasm', (req, res) => {
 	res.sendFile(path.join(__dirname, '/test/example.wasm'))
 })
 
+app.get('/js', (req, res) => {
+	res.sendFile(path.join(__dirname, '/test/example.js'))
+})
 
 app.listen(port, () => {
 	console.log("Testing WebAssembly javascript output glue code. Port: ", port)

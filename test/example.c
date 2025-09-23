@@ -1,5 +1,6 @@
 #include <stdio.h>
+#include <emscripten.h>
 
-void geet() { printf("Greetings from Wonderland. ML"); }
+const char * greet() { return "Greetings from Wonderland! ML"; }
 
 int add(int a, int b) { return a + b; }
