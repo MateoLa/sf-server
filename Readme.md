@@ -1,7 +1,9 @@
-## How to use Emscripten Web Workers
+# Stockfish and Emscripten
 
 
-#### Requisites
+#### Required
+
+With Node.js installed:
 
 ```sh
 npm install express --save
@@ -10,7 +12,9 @@ npm install ejs --save
 ```
 
 
-#### How could you test emcc .js and .wasm outputs?
+#### How to use Emscripten Web Workers?
+
+Test emcc .js and .wasm outputs
 
 ```sh
 emcc test/example.c -o test/example.js
@@ -30,9 +34,5 @@ Edit the file /test/script.js to see how to use the .js and .wasm emcc outputs.
 #### Testing different Stockfish versions compiled to Wasm.
 
 ```sh
-npm install express --save
-npm install body-parser --save
-npm install ejs --save
-
 node app.js
 ```

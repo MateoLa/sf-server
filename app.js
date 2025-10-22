@@ -4,47 +4,51 @@ const express = require('express');
 const app = express();
 const port = 5002;
 
-const path = require('path');
-app.set('view engine', 'ejs');
-app.use(express.static('public'));
+
 app.use(express.urlencoded({extended: true}));
+const path = require('path');
 
-
-app.get('/stockfish.svg', (req, res) => {
-	res.render(path.join(__dirname, 'public/stockfish.svg'));
-});
 
 app.use((req, res, next) => {
-    res.set("Access-Control-Allow-Origin", "*");
-	res.set("Cross-Origin-Resource-Policy", "cross-origin");
-	res.set("Cross-Origin-Embedder-Policy", "require-corp");
-	res.set("Cross-Origin-Opener-Policy", "same-origin");
+	res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
+	res.setHeader("Cross-Origin-Embedder-Policy", "require-corp");
 	next();
 })
 
 
+app.get('/stockfish.svg', (req, res) => {
+	res.sendFile(path.join(__dirname, 'stockfish.svg'));
+});
+
+
 app.get('/', (req, res) => {
-	res.render('index', { output: "" });
+	res.sendFile(path.join(__dirname, 'index.html'));
 })
 
 
 app.post('/', (req, res) => {
 	const command = req.body.command;
-
 	console.log("UCI command: ", command);
-
-	res.render("index", { output: req.body.response })
+	res.json({ message: "UCI cmd received" });
 });
 
 
-app.get('/wasm', (req, res) => {
-    res.set("Content-Security-Policy", "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'");
-	res.set('Content-Type', 'application/wasm')
-	res.sendFile(path.join(__dirname, '/sf/sf171-79.wasm'))
+app.get('/stockfish.js', (req, res) => {
+	res.sendFile(path.join(__dirname, '/sf/stockfish.js'));
 })
 
 
+app.get('/stockfish.wasm', (req, res) => {
+	console.log('Time: ', Date.now());
+	res.set('Content-Type', 'application/wasm')
+	res.sendFile(path.join(__dirname, '/sf/stockfish.wasm'))
+})
+
+app.get('/script.js', (req, res) => {
+	res.sendFile(path.join(__dirname, '/script.js'));
+})
+
 app.listen(port, () => {
-	console.log("Testing Stockfish wasm compilations. Listening on port ", port)
+	console.log("Testing Stockfish wasm compilation. Listening on port ", port)
 })
 

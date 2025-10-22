@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Stockfish UCI</title>
+  <title>SF wasm</title>
   <link rel="icon" type="image/svg+xml" href="stockfish.svg">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="/stockfish.js"></script>
   <style>
     body { padding-top: 50px; }
   </style>
@@ -12,24 +13,22 @@
 <body>
 
   <div class="container">
-    <h2>Wasm Stockfish Compilation Tests</h2>
+    <h2>Wasm SF Compilation Tests</h2>
 
     <div class="jumbotron">
-      <h3>Enter your UCI command here</h3>
+      <h3>UCI command</h3>
       <form id="form" method="POST">
-        <label for="command">UCI command:</label>
-        <input type="text" id="command" name="command" placeholder="ex: UCI" required>
+        <input type="text" id="command" name="command" class="w-100" placeholder="ex: UCI" required>
         <input type="hidden" id="response" name="response">  
       </form>
     </div>
 
     <div class="jumbotron">
       <h3>Response</h3>
-      <div id="output"><%= salida %></div>
+      <div id="output"></div>
     </div>
   </div>
 
   <script src="/script.js"></script>
-  <script src="/sf17-emb.js" type="module"></script>
 </body>
 </html>

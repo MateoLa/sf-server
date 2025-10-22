@@ -5,7 +5,7 @@
 
 import Module from './example.js';
 
-const { _add } = await Module()
+const { _add } = await Module();
 
 let response = document.getElementById("output");
 
